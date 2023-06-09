@@ -1,27 +1,27 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { breakpoints, useWindowSize } from '@edx/paragon';
 
 import CertificateStatus from './certificate-status/CertificateStatus';
 import CourseCompletion from './course-completion/CourseCompletion';
-import CourseGrade from './grades/course-grade/CourseGrade';
-import DetailedGrades from './grades/detailed-grades/DetailedGrades';
-import GradeSummary from './grades/grade-summary/GradeSummary';
+// import CourseGrade from './grades/course-grade/CourseGrade';
+// import DetailedGrades from './grades/detailed-grades/DetailedGrades';
+// import GradeSummary from './grades/grade-summary/GradeSummary';
 import ProgressHeader from './ProgressHeader';
 import RelatedLinks from './related-links/RelatedLinks';
 
-import { useModel } from '../../generic/model-store';
+// import { useModel } from '../../generic/model-store';
 
 function ProgressTab() {
-  const {
-    courseId,
-  } = useSelector(state => state.courseHome);
+  // const {
+  //   courseId,
+  // } = useSelector(state => state.courseHome);
 
-  const {
-    gradesFeatureIsFullyLocked,
-  } = useModel('progress', courseId);
+  // const {
+  //   gradesFeatureIsFullyLocked,
+  // } = useModel('progress', courseId);
 
-  const applyLockedOverlay = gradesFeatureIsFullyLocked ? 'locked-overlay' : '';
+  // const applyLockedOverlay = gradesFeatureIsFullyLocked ? 'locked-overlay' : '';
 
   const windowWidth = useWindowSize().width;
   if (windowWidth === undefined) {
@@ -41,7 +41,8 @@ function ProgressTab() {
           <CourseCompletion />
           {!wideScreen && <CertificateStatus />}
           {/* <CourseGrade />
-          <div className={`grades my-4 p-4 rounded raised-card ${applyLockedOverlay}`} aria-hidden={gradesFeatureIsFullyLocked}>
+          <div className={`grades my-4 p-4 rounded raised-card ${applyLockedOverlay}`}
+          aria-hidden={gradesFeatureIsFullyLocked}>
             <GradeSummary />
             <DetailedGrades />
           </div> */}
