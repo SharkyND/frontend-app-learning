@@ -40,11 +40,11 @@ function ProgressTab() {
         <div className="col-12 col-md-8 p-0">
           <CourseCompletion />
           {!wideScreen && <CertificateStatus />}
-          <CourseGrade />
+          {/* <CourseGrade />
           <div className={`grades my-4 p-4 rounded raised-card ${applyLockedOverlay}`} aria-hidden={gradesFeatureIsFullyLocked}>
             <GradeSummary />
             <DetailedGrades />
-          </div>
+          </div> */}
         </div>
 
         {/* Side panel */}
