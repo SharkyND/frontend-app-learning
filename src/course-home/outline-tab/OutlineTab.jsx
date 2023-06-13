@@ -5,7 +5,8 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { history } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Button,Alert } from '@edx/paragon';
+import { Info } from '@edx/paragon/icons';
+import { Button, Alert } from '@edx/paragon';
 import { AlertList } from '../../generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
@@ -28,7 +29,6 @@ import { useModel } from '../../generic/model-store';
 import WelcomeMessage from './widgets/WelcomeMessage';
 import ProctoringInfoPanel from './widgets/ProctoringInfoPanel';
 import AccountActivationAlert from '../../alerts/logistration-alert/AccountActivationAlert';
-import { Info } from '@edx/paragon/icons';
 
 /** [MM-P2P] Experiment */
 import { initHomeMMP2P, MMP2PFlyover } from '../../experiments/mm-p2p';
@@ -147,7 +147,7 @@ function OutlineTab({ intl }) {
           />
         </div>
         <div className="col col-12 col-md-8">
-          { /** [MM-P2P] Experiment (the conditional) */ }
+          { /** [MM-P2P] Experiment (the conditional) */}
           {/* { !MMP2P.state.isEnabled
             && (
             <AlertList
@@ -162,12 +162,14 @@ function OutlineTab({ intl }) {
             />
             )} */}
 
-            {courseId 
-            && (<Alert variant="info" icon={Info}>
+          {courseId
+            && (
+              <Alert variant="info" icon={Info}>
                 <span className="font-weight-bold">
                   XENA Training for {courseId}
                 </span>
-              </Alert>)}
+              </Alert>
+            )}
 
           {isSelfPaced && hasDeadlines && !MMP2P.state.isEnabled && (
             <>
@@ -212,8 +214,8 @@ function OutlineTab({ intl }) {
               />
             )}
             <CourseTools />
-            { /** [MM-P2P] Experiment (conditional) */ }
-            { MMP2P.state.isEnabled
+            { /** [MM-P2P] Experiment (conditional) */}
+            {MMP2P.state.isEnabled
               ? <MMP2PFlyover isStatic options={MMP2P} />
               : (
                 <UpgradeNotification
