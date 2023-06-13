@@ -5,7 +5,7 @@ import { sendTrackEvent } from '@edx/frontend-platform/analytics';
 import { getAuthenticatedUser } from '@edx/frontend-platform/auth';
 import { history } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
-import { Button } from '@edx/paragon';
+import { Button,Alert } from '@edx/paragon';
 import { AlertList } from '../../generic/user-messages';
 
 import CourseDates from './widgets/CourseDates';
@@ -19,15 +19,16 @@ import Section from './Section';
 import ShiftDatesAlert from '../suggested-schedule-messaging/ShiftDatesAlert';
 import UpgradeNotification from '../../generic/upgrade-notification/UpgradeNotification';
 import UpgradeToShiftDatesAlert from '../suggested-schedule-messaging/UpgradeToShiftDatesAlert';
-import useCertificateAvailableAlert from './alerts/certificate-status-alert';
-import useCourseEndAlert from './alerts/course-end-alert';
-import useCourseStartAlert from '../../alerts/course-start-alert';
+// import useCertificateAvailableAlert from './alerts/certificate-status-alert';
+// import useCourseEndAlert from './alerts/course-end-alert';
+// import useCourseStartAlert from '../../alerts/course-start-alert';
 import usePrivateCourseAlert from './alerts/private-course-alert';
-import useScheduledContentAlert from './alerts/scheduled-content-alert';
+// import useScheduledContentAlert from './alerts/scheduled-content-alert';
 import { useModel } from '../../generic/model-store';
 import WelcomeMessage from './widgets/WelcomeMessage';
 import ProctoringInfoPanel from './widgets/ProctoringInfoPanel';
 import AccountActivationAlert from '../../alerts/logistration-alert/AccountActivationAlert';
+import { Info } from '@edx/paragon/icons';
 
 /** [MM-P2P] Experiment */
 import { initHomeMMP2P, MMP2PFlyover } from '../../experiments/mm-p2p';
@@ -77,11 +78,11 @@ function OutlineTab({ intl }) {
   };
 
   // Below the course title alerts (appearing in the order listed here)
-  const courseStartAlert = useCourseStartAlert(courseId);
-  const courseEndAlert = useCourseEndAlert(courseId);
-  const certificateAvailableAlert = useCertificateAvailableAlert(courseId);
+  // const courseStartAlert = useCourseStartAlert(courseId);
+  // const courseEndAlert = useCourseEndAlert(courseId);
+  // const certificateAvailableAlert = useCertificateAvailableAlert(courseId);
   const privateCourseAlert = usePrivateCourseAlert(courseId);
-  const scheduledContentAlert = useScheduledContentAlert(courseId);
+  // const scheduledContentAlert = useScheduledContentAlert(courseId);
 
   const rootCourseId = courses && Object.keys(courses)[0];
 
@@ -147,7 +148,7 @@ function OutlineTab({ intl }) {
         </div>
         <div className="col col-12 col-md-8">
           { /** [MM-P2P] Experiment (the conditional) */ }
-          { !MMP2P.state.isEnabled
+          {/* { !MMP2P.state.isEnabled
             && (
             <AlertList
               topic="outline-course-alerts"
@@ -159,7 +160,15 @@ function OutlineTab({ intl }) {
                 ...scheduledContentAlert,
               }}
             />
-            )}
+            )} */}
+
+            {courseId 
+            && (<Alert variant="info" icon={Info}>
+                <span className="font-weight-bold">
+                  XENA Training for {courseId}
+                </span>
+              </Alert>)}
+
           {isSelfPaced && hasDeadlines && !MMP2P.state.isEnabled && (
             <>
               <ShiftDatesAlert model="outline" fetch={fetchOutlineTab} />

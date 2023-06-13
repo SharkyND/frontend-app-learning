@@ -25,12 +25,13 @@ import OutlineTab from './course-home/outline-tab';
 import { CourseExit } from './courseware/course/course-exit';
 import CoursewareContainer from './courseware';
 import CoursewareRedirectLandingPage from './courseware/CoursewareRedirectLandingPage';
-import DatesTab from './course-home/dates-tab';
+// import DatesTab from './course-home/dates-tab';
 import GoalUnsubscribe from './course-home/goal-unsubscribe';
 import ProgressTab from './course-home/progress-tab/ProgressTab';
 import { TabContainer } from './tab-page';
 
-import { fetchDatesTab, fetchOutlineTab, fetchProgressTab } from './course-home/data';
+// import { fetchDatesTab, fetchOutlineTab, fetchProgressTab } from './course-home/data';
+import { fetchOutlineTab, fetchProgressTab } from './course-home/data';
 import { fetchCourse } from './courseware/data';
 import initializeStore from './store';
 import NoticesProvider from './generic/notices';
@@ -61,11 +62,11 @@ subscribe(APP_READY, () => {
                   <LiveTab />
                 </TabContainer>
               </PageRoute>
-              <PageRoute path="/course/:courseId/dates">
+              {/* <PageRoute path="/course/:courseId/dates">
                 <TabContainer tab="dates" fetch={fetchDatesTab} slice="courseHome">
                   <DatesTab />
                 </TabContainer>
-              </PageRoute>
+              </PageRoute> */}
               <PageRoute path="/course/:courseId/discussion/:path*">
                 <TabContainer tab="discussion" fetch={fetchDiscussionTab} slice="courseHome">
                   <DiscussionTab />
